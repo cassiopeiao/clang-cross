@@ -9,7 +9,7 @@ on:
 jobs:
   build-llvm:
     name: Build LLVM
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04-arm
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
 
   build-targets:
     name: Build Targets
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04-arm
     needs:
       - build-llvm
     strategy:
@@ -113,7 +113,7 @@ jobs:
 
   release:
     name: Release
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04-arm
     needs:
       - build-targets
     if: github.event_name == 'release'
